@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->group(function () {
+    // Share a task list with another user by username
+    Route::post('/task-list-shares', 'TaskListShareController@shareTaskList');
+
+    // Get all task lists shared with the authenticated user
+    Route::get('/task-list-shares', 'TaskListShareController@sharedWithUser');
+
+    // Return the authenticated user's details
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
 });

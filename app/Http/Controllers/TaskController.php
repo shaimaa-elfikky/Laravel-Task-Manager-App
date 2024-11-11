@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller {
-	// apply auth middleware so only authenticated users have access
+	
 	public function __construct() {
 		$this->middleware('auth');
 	}
 
-	public function index(Request $request, Task $task) {
+	public function index(Request $request, Task $task) {		
 		// get all the tasks based on current user id
 		$allTasks = $task->whereIn('user_id', $request->user())->with('user');
 		$tasks = $allTasks->orderBy('created_at', 'desc')->take(10)->get();

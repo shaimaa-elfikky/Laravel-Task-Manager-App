@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTaskSharesTable extends Migration
+class CreateTaskListSharesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTaskSharesTable extends Migration
      */
     public function up()
     {
-        Schema::create('task_shares', function (Blueprint $table) {
-            $table->foreignId('task_id')->constrained()->onDelete('cascade');
+        Schema::create('task_list_shares', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('task_list_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->primary(['task_id', 'user_id']);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateTaskSharesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('task_shares');
+        Schema::dropIfExists('task_list_shares');
     }
 }
