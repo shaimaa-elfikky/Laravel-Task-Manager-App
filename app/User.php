@@ -40,4 +40,9 @@ class User extends Authenticatable
     public function tasks() {
         return $this->hasMany(Task::class);
     }    
+
+    public function taskLists()
+    {
+        return $this->hasMany(TaskList::class);  // Define a one-to-many relationship with TaskList
+    }
 }
