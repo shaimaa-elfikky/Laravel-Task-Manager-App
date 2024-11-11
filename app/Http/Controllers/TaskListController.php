@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Task;
-use App\TaskShare;
 use App\TaskList;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -15,15 +13,13 @@ class TaskListController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');  // Ensure only authenticated users can access these routes
+        $this->middleware('auth');  
     }
 
-    /**
-     * Display all task lists for the authenticated user
-     */
+  
     public function index()
     {
-        $taskLists = Auth::user()->taskLists()->with('tasks')->get();  // Fetch task lists and their tasks
+        $taskLists = Auth::user()->taskLists()->with('tasks')->get();
         return response()->json($taskLists);
     }
 
