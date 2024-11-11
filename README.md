@@ -19,10 +19,7 @@ Please follow the guide.
 
 3. Login with username and password
 
-**OR**
 
-for starterkit Laravel & Reactjs follow the link below
-    [Laravel & React Js Starterkit](https://github.com/berandakreatif/Laravel-Reactjs-Starterkit)
 
 ## Features
 - [x] Laravel 5.8 Version
