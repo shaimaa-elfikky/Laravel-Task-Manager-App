@@ -4,7 +4,7 @@
 
 Please follow the guide.
 
-1. `git clone https://github.com/berandakreatif/Laravel-Reactjs-Starterkit.git`
+1. `git clone https://github.com/shaimaa-elfikky/Laravel-Task-Manager-App.git`
 2. `update the .env file along with database connection`
 3. `composer install && composer update`
 4. `php artisan migrate`
