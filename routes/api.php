@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->group(function () {
 
-    Route::get('/tasks', 'TaskController@index');
+    Route::get('tasks', 'TaskController@index');
     Route::post('tasks', 'TaskController@store');
     Route::get('tasks/{id}', 'TaskController@show');
     Route::get('tasks/{id}/edit', 'TaskController@edit');
