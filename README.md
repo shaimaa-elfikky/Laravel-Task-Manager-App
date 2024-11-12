@@ -4,7 +4,7 @@
 
 Please follow the guide.
 
-1. `git clone https://github.com/berandakreatif/Laravel-Reactjs-Starterkit.git`
+1. `git clone https://github.com/shaimaa-elfikky/Laravel-Task-Manager-App.git`
 2. `update the .env file along with database connection`
 3. `composer install && composer update`
 4. `php artisan migrate`
@@ -18,11 +18,6 @@ Please follow the guide.
 2. Open browser and run with this url `http://127.0.0.1:8000`
 
 3. Login with username and password
-
-**OR**
-
-for starterkit Laravel & Reactjs follow the link below
-    [Laravel & React Js Starterkit](https://github.com/berandakreatif/Laravel-Reactjs-Starterkit)
 
 ## Features
 - [x] Laravel 5.8 Version
