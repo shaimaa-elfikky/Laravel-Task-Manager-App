@@ -225,10 +225,10 @@ Validation: The name field is required and must be a string with a maximum lengt
 - **Request Body**:
   ```json
     {
-      "task_list_id": "required|integer",  // The ID of the task list to share
-      "username": "required|string"        // The username of the user to share the task list with
+      "task_list_id": "required|integer",  
+      "username": "required|string"        
     }
-  - **Response**:
+- **Response**:
     {
       "message": "Task list shared successfully with {username}"
     }
