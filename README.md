@@ -145,6 +145,7 @@ No content (204 status code).
         "name": "My New Task List"
     }
 - **Response**:
+  ```json
   {
       "id": 1,
       "name": "My New Task List",
@@ -156,59 +157,64 @@ Status Code: 201 Created
 Validation: The name field is required and must be a string with a maximum length of 255 characters.
 
 
-**Endpoint**: `/api/task-lists/{id}`
+- **Endpoint**: `/api/task-lists/{id}`
 - **Method**: `GET`
 - **Description**:  Retrieves a specific task list along with its tasks for the authenticated user.
-Request:
-Headers: Authorization: Bearer {token}
+**Request**:
+**Headers**: Authorization: Bearer {token}
 - **Response**:
-{
-    "id": 1,
-    "name": "Work Tasks",
-    "user_id": 1,
-    "share_link": null,
-    "tasks": [
-        {
-            "id": 1,
-            "name": "Finish report",
-            "completed": false
-        },
-        
-    ]
-}
+   ```json
+  {
+      "id": 1,
+      "name": "Work Tasks",
+      "user_id": 1,
+      "share_link": null,
+      "tasks": [
+          {
+              "id": 1,
+              "name": "Finish report",
+              "completed": false
+          },
+          
+      ]
+  }
 
 
-**Endpoint**: `/api/task-lists/{id}/share`
+
+- **Endpoint**: `/api/task-lists/{id}/share`
 - **Method**: `POST`
-- **Description**:  Retrieves a specific task list along with its tasks for the authenticated user.
-Request:
-Headers: Authorization: Bearer {token}
+- **Description**: Retrieves a specific task list along with its tasks for the authenticated user.
+- **Request**:
+- **Headers**: Authorization: Bearer {token}
 - **Response**:
-{
-    "share_link": "http://http://127.0.0.1:8000//task-lists/share/{shareLink}"
-}
+    ```json
+    {
+        "share_link": "http://http://127.0.0.1:8000//task-lists/share/{shareLink}"
+    }
 
 
 **Endpoint**: `/api/task-lists/share/{shareLink}`
 - **Method**: `GET`
 - **Description**:  Displays a task list that has been shared using a unique share link
--**Request**:
+- **Request**:
+
   URL Parameter: shareLink is the unique link provided for the shared task list.
 - **Response**:
-{
-    "id": 1,
-    "name": "Work Tasks",
-    "user_id": 1,
-    "share_link": "{shareLink}",
-    "tasks": [
-        {
-            "id": 1,
-            "name": "Finish report",
-            "completed": false
-        },
-        
-    ]
-}
+    ```json
+    {
+        "id": 1,
+        "name": "Work Tasks",
+        "user_id": 1,
+        "share_link": "{shareLink}",
+        "tasks": [
+            {
+                "id": 1,
+                "name": "Finish report",
+                "completed": false
+            },
+            
+        ]
+    }
 
 
 
@@ -217,14 +223,15 @@ Headers: Authorization: Bearer {token}
 - **Method**: `POST`
 - **Description**: Shares a task list with another user by their username.
 - **Request Body**:
-  {
-    "task_list_id": "required|integer",  // The ID of the task list to share
-    "username": "required|string"        // The username of the user to share the task list with
-  }
-- **Response**:
-  {
-    "message": "Task list shared successfully with {username}"
-  }
+  ```json
+    {
+      "task_list_id": "required|integer",  // The ID of the task list to share
+      "username": "required|string"        // The username of the user to share the task list with
+    }
+  - **Response**:
+    {
+      "message": "Task list shared successfully with {username}"
+    }
 
 
 
@@ -232,6 +239,7 @@ Headers: Authorization: Bearer {token}
 - **Method**: `GET`
 - **Description**:  Retrieves all task lists that have been shared with the authenticated user.
 - **Response**:
+   ```json
   [
     {
       "task_list": {

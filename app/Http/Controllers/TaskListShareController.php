@@ -20,7 +20,7 @@ class TaskListShareController extends Controller
     {
         $request->validate([
             'task_list_id' => 'required|exists:task_lists,id', 
-            'username' => 'required|exists:users,username',   
+            'user_id' => 'required|exists:users,id',   
         ]);
 
         $taskList = TaskList::where('id', $request->task_list_id)
@@ -28,7 +28,7 @@ class TaskListShareController extends Controller
                             ->firstOrFail();
 
       
-        $user = User::where('username', $request->username)->firstOrFail();
+        $user = User::where('user_id', $request->user_id)->firstOrFail();
 
         TaskListShare::create([
             'task_list_id' => $request->task_list_id,
@@ -36,7 +36,7 @@ class TaskListShareController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'Task list shared successfully with ' . $user->username,
+            'message' => 'Task list shared successfully with ' . $user->user_id,
         ]);
     }
 
