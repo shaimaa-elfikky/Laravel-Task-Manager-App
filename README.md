@@ -62,23 +62,21 @@ This section documents the API endpoints for managing tasks in the Task Manageme
           "email": "user@example.com"
         }
       },
-      ...
+      
     ]
   }
 
-
-**Endpoint**: `/api/tasks`
+### Create New Task
+-**Endpoint**: `/api/tasks`
 - **Method**: `POST`
 - **Description**:  Creates a new task for the authenticated user.
 -**Request Body**:
- **Response**:
- ```json
+
  {
   "name": "Task Name"
  }
-
-- **Response**:
- ```json
+ 
+-**Response**:
 {
   "task": {
     "id": 1,
@@ -89,12 +87,11 @@ This section documents the API endpoints for managing tasks in the Task Manageme
   }
 }
 
-
-**Endpoint**: `/api/tasks/{id}`
+### Task Details
+-**Endpoint**: `/api/tasks/{id}`
 - **Method**: `GET`
 - **Description**:  Retrieves details of a specific task by id
 - **Response**:
- ```json
 {
   "task": {
     "id": 1,
@@ -106,16 +103,14 @@ This section documents the API endpoints for managing tasks in the Task Manageme
 }
 
 
-
-**Endpoint**: `/api/tasks/{id}`
+### Delete Task
+-**Endpoint**: `/api/tasks/{id}`
 - **Method**: `DELETE`
 - **Description**:  Deletes a specific task by id.
 -**Request Body**:
 
-- **Response**:
- ```json
+-**Response**:
 No content (204 status code).
-
 
 
 
@@ -124,7 +119,6 @@ No content (204 status code).
 - **Method**: `GET`
 - **Description**: Retrieves all task lists for the authenticated user, along with the tasks in each list
 - **Response**:
-  ```json
 [
     {
         "id": 1,
@@ -137,10 +131,10 @@ No content (204 status code).
                 "name": "Finish report",
                 "completed": false
             },
-            ...
+          
         ]
     },
-    ...
+  
 ]
 
 
@@ -149,12 +143,10 @@ No content (204 status code).
 - **Description**: Creates a new task list for the authenticated user.
 - **Headers**:Authorization: Bearer {token}
  -**Request Body**:
- ```json
     {
         "name": "My New Task List"
     }
 - **Response**:
- ```json
 {
     "id": 1,
     "name": "My New Task List",
@@ -172,7 +164,6 @@ Validation: The name field is required and must be a string with a maximum lengt
 Request:
 Headers: Authorization: Bearer {token}
 - **Response**:
- ```json
 {
     "id": 1,
     "name": "Work Tasks",
@@ -184,7 +175,7 @@ Headers: Authorization: Bearer {token}
             "name": "Finish report",
             "completed": false
         },
-        ...
+        
     ]
 }
 
@@ -195,7 +186,6 @@ Headers: Authorization: Bearer {token}
 Request:
 Headers: Authorization: Bearer {token}
 - **Response**:
- ```json
 {
     "share_link": "http://http://127.0.0.1:8000//task-lists/share/{shareLink}"
 }
@@ -207,7 +197,6 @@ Headers: Authorization: Bearer {token}
 Request:
 URL Parameter: shareLink is the unique link provided for the shared task list.
 - **Response**:
- ```json
 {
     "id": 1,
     "name": "Work Tasks",
@@ -219,7 +208,7 @@ URL Parameter: shareLink is the unique link provided for the shared task list.
             "name": "Finish report",
             "completed": false
         },
-        ...
+        
     ]
 }
 
@@ -230,13 +219,11 @@ URL Parameter: shareLink is the unique link provided for the shared task list.
 - **Method**: `POST`
 - **Description**: Shares a task list with another user by their username.
 - **Request Body**:
-  ```json
 {
   "task_list_id": "required|integer",  // The ID of the task list to share
   "username": "required|string"        // The username of the user to share the task list with
 }
 - **Response**:
-  ```json
 {
   "message": "Task list shared successfully with {username}"
 }
@@ -247,7 +234,6 @@ URL Parameter: shareLink is the unique link provided for the shared task list.
 - **Method**: `GET`
 - **Description**:  Retrieves all task lists that have been shared with the authenticated user.
 - **Response**:
-  ```json
 [
   {
     "task_list": {
