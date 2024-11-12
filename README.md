@@ -86,8 +86,8 @@ This section documents the API endpoints for managing tasks in the Task Manageme
 
 ### Task Details
 - **Endpoint**: `/api/tasks/{id}`
-- **Method**: `GET`
-- **Description**:  Retrieves details of a specific task by id
+- **Method**: `PUT`
+- **Description**:  Edit  a specific task by id
 - **Response**:
   ```json
   {
