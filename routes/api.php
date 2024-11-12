@@ -17,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->group(function () {
 
-    Route::get('tasks', [TaskController::class, 'index']);
-    Route::post('tasks', [TaskController::class, 'store']);
-    Route::get('tasks/{id}', [TaskController::class, 'show']);
-    Route::get('tasks/{id}/edit', [TaskController::class, 'edit']);
-    Route::put('tasks/{id}', [TaskController::class, 'update']);
-    Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
+    Route::get('/tasks', 'TaskController@index');
+    Route::post('tasks', 'TaskController@store');
+    Route::get('tasks/{id}', 'TaskController@show');
+    Route::get('tasks/{id}/edit', 'TaskController@edit');
+    Route::put('tasks/{id}', 'TaskController@update');
+    Route::delete('tasks/{id}', 'TaskController@destroy');
     // Share a task list with another user by username
     Route::post('/task-list-shares', 'TaskListShareController@shareTaskList');
 
