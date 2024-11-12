@@ -65,14 +65,14 @@ This section documents the API endpoints for managing tasks in the Task Manageme
 -**Endpoint**: `/api/tasks`
 - **Method**: `POST`
 - **Description**:  Creates a new task for the authenticated user.
--**Request Body**:
-
- {
-  "name": "Task Name"
- }
- 
--**Response**:
-{
+- **Request Body**:
+  ```json
+  {
+    "name": "Task Name"
+  } 
+- **Response**:
+  ```json
+  {
   "task": {
     "id": 1,
     "name": "Task Name",
@@ -80,31 +80,32 @@ This section documents the API endpoints for managing tasks in the Task Manageme
     "created_at": "2024-01-01T12:00:00Z",
     "updated_at": "2024-01-01T12:00:00Z"
   }
-}
+  }
+
+
 
 ### Task Details
--**Endpoint**: `/api/tasks/{id}`
+- **Endpoint**: `/api/tasks/{id}`
 - **Method**: `GET`
 - **Description**:  Retrieves details of a specific task by id
 - **Response**:
-{
-  "task": {
-    "id": 1,
-    "name": "Task Name",
-    "user_id": 1,
-    "created_at": "2024-01-01T12:00:00Z",
-    "updated_at": "2024-01-01T12:00:00Z"
+  ```json
+  {
+    "task": {
+      "id": 1,
+      "name": "Task Name",
+      "user_id": 1,
+      "created_at": "2024-01-01T12:00:00Z",
+      "updated_at": "2024-01-01T12:00:00Z"
+    }
   }
-}
 
 
 ### Delete Task
--**Endpoint**: `/api/tasks/{id}`
+- **Endpoint**: `/api/tasks/{id}`
 - **Method**: `DELETE`
 - **Description**:  Deletes a specific task by id.
--**Request Body**:
-
--**Response**:
+- **Response**:
 No content (204 status code).
 
 
@@ -114,41 +115,43 @@ No content (204 status code).
 - **Method**: `GET`
 - **Description**: Retrieves all task lists for the authenticated user, along with the tasks in each list
 - **Response**:
-[
-    {
-        "id": 1,
-        "name": "Work Tasks",
-        "user_id": 1,
-        "share_link": null,
-        "tasks": [
-            {
-                "id": 1,
-                "name": "Finish report",
-                "completed": false
-            },
-          
-        ]
-    },
-  
-]
+  ```json
+  [
+      {
+          "id": 1,
+          "name": "Work Tasks",
+          "user_id": 1,
+          "share_link": null,
+          "tasks": [
+              {
+                  "id": 1,
+                  "name": "Finish report",
+                  "completed": false
+              },
+            
+          ]
+      },
+    
+  ]
 
 
 - **Endpoint**: `/api/task-lists`
 - **Method**: `POST`
 - **Description**: Creates a new task list for the authenticated user.
 - **Headers**:Authorization: Bearer {token}
- -**Request Body**:
+- **Request Body**:
+  ```json
     {
         "name": "My New Task List"
     }
 - **Response**:
-{
-    "id": 1,
-    "name": "My New Task List",
-    "user_id": 1,
-    "share_link": null,
-    "tasks": []
-}
+  {
+      "id": 1,
+      "name": "My New Task List",
+      "user_id": 1,
+      "share_link": null,
+      "tasks": []
+  }
 Status Code: 201 Created
 Validation: The name field is required and must be a string with a maximum length of 255 characters.
 
@@ -189,8 +192,8 @@ Headers: Authorization: Bearer {token}
 **Endpoint**: `/api/task-lists/share/{shareLink}`
 - **Method**: `GET`
 - **Description**:  Displays a task list that has been shared using a unique share link
-Request:
-URL Parameter: shareLink is the unique link provided for the shared task list.
+-**Request**:
+  URL Parameter: shareLink is the unique link provided for the shared task list.
 - **Response**:
 {
     "id": 1,
@@ -214,14 +217,14 @@ URL Parameter: shareLink is the unique link provided for the shared task list.
 - **Method**: `POST`
 - **Description**: Shares a task list with another user by their username.
 - **Request Body**:
-{
-  "task_list_id": "required|integer",  // The ID of the task list to share
-  "username": "required|string"        // The username of the user to share the task list with
-}
+  {
+    "task_list_id": "required|integer",  // The ID of the task list to share
+    "username": "required|string"        // The username of the user to share the task list with
+  }
 - **Response**:
-{
-  "message": "Task list shared successfully with {username}"
-}
+  {
+    "message": "Task list shared successfully with {username}"
+  }
 
 
 
@@ -229,36 +232,36 @@ URL Parameter: shareLink is the unique link provided for the shared task list.
 - **Method**: `GET`
 - **Description**:  Retrieves all task lists that have been shared with the authenticated user.
 - **Response**:
-[
-  {
-    "task_list": {
-      "id": 1,
-      "name": "My Shared Task List",
-      "user_id": 1,
-      "share_link": "a-unique-link",
-      "tasks": [
-        {
-          "id": 1,
-          "name": "Task 1",
-          "completed": false,
-          "user_id": 1
-        },
-        {
-          "id": 2,
-          "name": "Task 2",
-          "completed": true,
-          "user_id": 1
-        }
-      ]
+  [
+    {
+      "task_list": {
+        "id": 1,
+        "name": "My Shared Task List",
+        "user_id": 1,
+        "share_link": "a-unique-link",
+        "tasks": [
+          {
+            "id": 1,
+            "name": "Task 1",
+            "completed": false,
+            "user_id": 1
+          },
+          {
+            "id": 2,
+            "name": "Task 2",
+            "completed": true,
+            "user_id": 1
+          }
+        ]
+      }
+    },
+    {
+      "task_list": {
+        "id": 2,
+        "name": "Another Shared Task List",
+        "user_id": 2,
+        "share_link": "another-unique-link",
+        "tasks": []
+      }
     }
-  },
-  {
-    "task_list": {
-      "id": 2,
-      "name": "Another Shared Task List",
-      "user_id": 2,
-      "share_link": "another-unique-link",
-      "tasks": []
-    }
-  }
-]
+  ]
