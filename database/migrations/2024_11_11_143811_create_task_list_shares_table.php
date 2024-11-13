@@ -14,9 +14,11 @@ class CreateTaskListSharesTable extends Migration
     public function up()
     {
         Schema::create('task_list_shares', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('task_list_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('task_list_id'); // Define foreign key column without foreignId
+            $table->foreign('task_list_id')->references('id')->on('task_lists')->onDelete('cascade'); // Foreign key constraint
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
