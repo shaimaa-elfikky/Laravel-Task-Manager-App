@@ -14,10 +14,11 @@ class CreateTaskListsTable extends Migration
     public function up()
     {
         Schema::create('task_lists', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name');
             $table->uuid('share_link')->nullable()->unique(); // Unique UUID for sharing
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Reference to user
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
